@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit) = "add(form.value)">
+<div>
+<mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput  formControlName ="username" >
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="mail" class="form-control-feedback"  
+       *ngIf= "{ 'is-invalid': f.mail.touched && f.mail.errors}">
+      <mat-error>
+       <div>
+  <div *ngIf="f.mail.touched && f.mail.errors?.required">Email is required</div>
+  <div *ngIf="f.mail.touched && f.mail.errors?.pattern">Email address must contain @ character</div>
+  <div *ngIf="f.mail.touched && f.mail.errors?.emailDomain">Email must have proper domain like gmail.com</div>
+</div>
+</mat-error>
+  </mat-form-field>
+  </div>
+  <div>
+  <mat-form-field appearance="fill">
+    <mat-label>Gender</mat-label>
+    <input matInput formControlName ="gender">
+  </mat-form-field>
+</div>
+  <div>
+    <button mat-button>Submit</button>
+  </div>
+  </form>
+  </div>
+
+<table mat-table [dataSource]="dataSource" >
+    
+   <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username | prefix: element.gender}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="mail">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element;"> 
+          <mat-icon (click)="delete(element.id)">delete</mat-icon>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+<!-- <div>
+  <p>Multiplier: {{2 | Multiplier: 10}}</p>
+</div> -->

@@ -1,0 +1,28 @@
+{
+  "people": [
+    {
+      "username": "Aravind",
+      "mail": "aravind@gmail.com",
+      "gender": "male",
+      "id": 5
+    },
+    {
+      "username": "kabi",
+      "mail": "kabi@gmail.com",
+      "gender": "female",
+      "id": 7
+    },
+    {
+      "username": "Rajam",
+      "mail": "rajamkavi@gmail.com",
+      "gender": "female",
+      "id": 8
+    },
+    {
+      "username": "Aravind",
+      "mail": "aravind@gmail.com",
+      "gender": "male",
+      "id": 9
+    }
+  ]
+}
